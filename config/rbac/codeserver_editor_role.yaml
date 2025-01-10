@@ -1,0 +1,27 @@
+# permissions for end users to edit codeservers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: code-server-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: codeserver-editor-role
+rules:
+- apiGroups:
+  - code.code-server.io
+  resources:
+  - codeservers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - code.code-server.io
+  resources:
+  - codeservers/status
+  verbs:
+  - get

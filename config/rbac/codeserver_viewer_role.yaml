@@ -1,0 +1,23 @@
+# permissions for end users to view codeservers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: code-server-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: codeserver-viewer-role
+rules:
+- apiGroups:
+  - code.code-server.io
+  resources:
+  - codeservers
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - code.code-server.io
+  resources:
+  - codeservers/status
+  verbs:
+  - get
